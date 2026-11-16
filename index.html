@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b35"><meta name="robots" content="noindex,nofollow"><title>Faysal Sentinel AI — Build 0.2.0</title>
+<style>
+:root{--bg:#f3f6fb;--panel:#fff;--text:#17233d;--muted:#71809a;--line:#e3e9f2;--nav:#101b35;--nav2:#1a2a4b;--green:#0e9f78;--blue:#3867d6;--red:#d64b59;--amber:#c98720;--shadow:0 10px 30px #1c31500c}
+[data-theme=dark]{--bg:#0b1220;--panel:#131e30;--text:#e8eef9;--muted:#9aa9c1;--line:#26354c;--nav:#080f1d;--nav2:#14223a;--shadow:0 10px 30px #0003}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.layout{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:var(--nav);color:#eaf0fb;padding:22px 15px;display:flex;flex-direction:column;gap:22px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#18b98c,#08785e);display:grid;place-items:center;font-weight:900;color:white}.brand b{font-size:15px;letter-spacing:.2px}.brand small{display:block;color:#9aabc7;font-size:11px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#aebbd1;text-align:left;padding:11px 12px;border-radius:10px;display:flex;align-items:center;gap:11px}.nav button.active,.nav button:hover{background:var(--nav2);color:#fff}.nav .ico{width:20px;text-align:center}.side-foot{margin-top:auto;color:#8da0bd;font-size:11px;padding:10px}.main{min-width:0}.topbar{height:72px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:5}.topbar-left{display:flex;align-items:center;gap:12px}.hamb{display:none}.topbar h1{font-size:17px;margin:0}.top-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:9px;padding:8px 12px}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.content{padding:27px 30px;max-width:1450px;margin:auto}.eyebrow{color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:10px}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:22px}.heading h2{margin:4px 0;font-size:25px}.heading p{color:var(--muted);margin:0}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin:18px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow);min-width:0}.stat-label{color:var(--muted);font-size:12px}.stat-value{font-size:27px;font-weight:750;margin:6px 0}.trend{font-size:11px;color:var(--green)}.cols{grid-template-columns:1.4fr 1fr}.card h3{font-size:14px;margin:0 0 14px}.muted{color:var(--muted)}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.list{display:grid;gap:0}.item{padding:12px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.item:first-child{border-top:0}.pill{display:inline-flex;padding:4px 8px;border-radius:99px;font-size:10px;font-weight:700;background:#e9f8f2;color:#087a5a}.pill.warn{background:#fff4df;color:#9a6411}.pill.danger{background:#ffebed;color:#b72f40}.pill.gray{background:#edf1f6;color:#66748a}.dark .pill{filter:brightness(.9)}.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0 14px}.bar span{display:block;height:100%;background:var(--green);border-radius:99px}.section{display:none}.section.active{display:block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:12px}.table th{color:var(--muted);font-weight:600}.actions{display:flex;gap:7px;flex-wrap:wrap}.empty{padding:28px;text-align:center;color:var(--muted)}.notice{padding:12px 14px;border-radius:11px;background:color-mix(in srgb,var(--green) 9%,var(--panel));border:1px solid color-mix(in srgb,var(--green) 25%,var(--line));margin-bottom:16px}.approval{border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}.approval h4{margin:0 0 6px}.approval p{margin:5px 0;color:var(--muted)}.mobile-overlay{display:none}
+@media(max-width:950px){.layout{grid-template-columns:215px 1fr}.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.content{padding:22px}}
+@media(max-width:680px){.layout{display:block}.sidebar{position:fixed;z-index:20;inset:0 auto 0 0;width:265px;transform:translateX(-105%);transition:.2s}.sidebar.open{transform:translateX(0)}.mobile-overlay.show{display:block;position:fixed;inset:0;background:#0008;z-index:15}.hamb{display:inline-block}.topbar{height:62px;padding:0 15px}.content{padding:18px 14px}.heading{display:block}.heading .btn{margin-top:12px}.stats{gap:10px}.card{padding:14px}.stat-value{font-size:23px}.top-actions .label{display:none}.table-wrap{overflow:auto}.table{min-width:540px}}
+
+.locked .layout{display:none}
+.login{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:18px;background:var(--bg);overflow:auto}
+.locked .login{display:flex}
+.login-card{width:100%;max-width:400px;display:grid;gap:13px}
+.login-card .brand{padding:0;color:var(--text)}
+.login-card .brand small{color:var(--muted)}
+.login-card label{display:grid;gap:5px;font-weight:600;font-size:13px}
+.login-card input,.sel{font:inherit;font-size:16px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);width:100%}
+.sel{width:auto;font-size:14px;padding:8px 10px}
+.login-card .btn.primary{padding:12px;font-weight:700}
+.err{color:var(--red);margin:0;min-height:1.2em;font-size:13px}
+.small{font-size:12px}
+.banner{padding:12px 14px;border-radius:11px;margin-bottom:16px;border:1px solid var(--line);background:var(--panel)}
+.banner.ok{background:color-mix(in srgb,var(--green) 9%,var(--panel));border-color:color-mix(in srgb,var(--green) 28%,var(--line))}
+.banner.warn{background:color-mix(in srgb,var(--amber) 10%,var(--panel));border-color:color-mix(in srgb,var(--amber) 35%,var(--line))}
+.banner.bad{background:color-mix(in srgb,var(--red) 9%,var(--panel));border-color:color-mix(in srgb,var(--red) 30%,var(--line))}
+.chart{display:flex;align-items:flex-end;gap:2px;height:110px;margin-top:6px}
+.chart i{flex:1 1 0;min-width:2px;background:color-mix(in srgb,var(--blue) 70%,var(--panel));border-radius:3px 3px 0 0;position:relative;min-height:2px}
+.chart i b{position:absolute;left:0;right:0;bottom:0;background:var(--red);border-radius:0 0 0 0}
+.chart-ax{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:6px}
+.report{white-space:pre-wrap;font:13px/1.55 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;margin:0 0 12px;overflow:auto}
+.item .grow{min-width:0;overflow-wrap:anywhere}
+.pill.live{background:#e9f8f2;color:#087a5a}
+.top-actions .btn{white-space:nowrap}
+.head-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(max-width:680px){.head-tools{margin-top:12px}}
+</style>
+<script src="config.js"></script>
+</head>
+<body class="locked">
+<div class="mobile-overlay" id="overlay"></div>
+<div class="login" id="login">
+<form class="card login-card" id="loginForm" autocomplete="on">
+<div class="brand"><div class="logo">FS</div><div><b>Faysal Sentinel AI</b><small>Connexion propriétaire</small></div></div>
+<label id="keyRow" hidden>Clé publique du projet Sentinel<input id="fKey" type="text" inputmode="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="sb_publishable_…"></label>
+<label>Adresse e-mail<input id="fEmail" type="email" autocomplete="username" required></label>
+<label>Mot de passe<input id="fPass" type="password" autocomplete="current-password" required></label>
+<button class="btn primary" id="fGo" type="submit">Se connecter</button>
+<p class="err" id="fErr" role="alert"></p>
+<p class="muted small">Seul le compte propriétaire peut lire les données de Sentinel. Aucune donnée n'est affichée sans connexion.</p>
+</form>
+</div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<div class="brand"><div class="logo">FS</div><div><b>Faysal Sentinel AI</b><small>SUPERVISION • BUILD 0.2.0</small></div></div>
+<nav class="nav" id="nav">
+<button class="active" data-page="surveillance"><span class="ico">◈</span>Surveillance</button>
+<button data-page="android"><span class="ico">▣</span>Android</button>
+<button data-page="commerce"><span class="ico">▤</span>Activité commerciale</button>
+<button data-page="diagnostic"><span class="ico">⌁</span>Diagnostic IA</button>
+<button data-page="improvements"><span class="ico">✧</span>Améliorations</button>
+<button data-page="reports"><span class="ico">▧</span>Rapports</button>
+<button data-page="settings"><span class="ico">⚙</span>Paramètres</button>
+</nav>
+<div class="side-foot">Système indépendant<br>Surveillance, Android et rapports : données réelles</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="topbar-left"><button class="btn hamb" id="hamb" aria-label="Menu">☰</button><h1 id="pageTitle">Surveillance générale</h1></div><div class="top-actions"><span class="pill live label" id="modePill">DONNÉES RÉELLES</span><button class="btn" id="theme">◐ <span class="label">Thème</span></button><button class="btn" id="btnOut" aria-label="Déconnexion">⎋ <span class="label">Quitter</span></button></div></header>
+<div class="content">
+<section class="section active" id="surveillance" data-live="1">
+<div class="heading"><div><div class="eyebrow">Vue d'ensemble</div><h2>Centre de surveillance</h2><p>Événements réels reçus de CalcNote Web et Android.</p></div><div class="head-tools"><select class="sel" data-period aria-label="Période"><option value="24">24 heures</option><option value="168">7 jours</option><option value="720">30 jours</option></select><button class="btn" data-refresh>↻ Actualiser</button></div></div>
+<div class="banner" id="sBanner">Chargement…</div>
+<div class="grid stats">
+<div class="card"><div class="stat-label">Dernière réception</div><div class="stat-value" id="sLast">—</div><span class="muted" id="sLastAbs"></span></div>
+<div class="card"><div class="stat-label">Événements</div><div class="stat-value" id="sEvents">—</div><span class="muted" id="sPeriod"></span></div>
+<div class="card"><div class="stat-label">Installations actives</div><div class="stat-value" id="sInst">—</div><span class="muted" id="sSess"></span></div>
+<div class="card"><div class="stat-label">Erreurs</div><div class="stat-value" id="sErr">—</div><span class="pill" id="sErrPill"></span></div>
+</div>
+<div class="grid cols">
+<div class="card"><h3>Activité récente</h3><div class="list" id="sRecent"></div><button class="btn" id="sMore" hidden style="margin-top:10px;width:100%">Voir plus</button></div>
+<div class="card"><h3>Santé des plateformes</h3><div id="sPlat"></div></div>
+</div>
+<div class="grid cols" style="margin-top:16px">
+<div class="card"><h3>Événements sur la période</h3><div id="sChart"></div></div>
+<div class="card"><h3>Erreurs les plus fréquentes</h3><div id="sTop"></div></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Versions vues</h3><div id="sVers"></div></div>
+</section>
+<section class="section" id="android" data-live="1">
+<div class="heading"><div><div class="eyebrow">Plateforme mobile</div><h2>Surveillance Android</h2><p>Application Capacitor : événements réels reçus.</p></div><div class="head-tools"><select class="sel" data-period aria-label="Période"><option value="24">24 heures</option><option value="168">7 jours</option><option value="720">30 jours</option></select><button class="btn" data-refresh>↻ Actualiser</button></div></div>
+<div class="banner" id="aBanner"></div>
+<div class="grid stats"><div class="card"><div class="stat-label">Sessions</div><div class="stat-value" id="aSess">0</div></div><div class="card"><div class="stat-label">Installations</div><div class="stat-value" id="aInst">0</div></div><div class="card"><div class="stat-label">Erreurs JS</div><div class="stat-value" id="aErr">0</div></div><div class="card"><div class="stat-label">Pertes de connexion</div><div class="stat-value" id="aOff">0</div></div></div>
+<div class="grid cols"><div class="card"><h3>Versions Android</h3><div id="aVers"></div></div><div class="card"><h3>Derniers événements Android</h3><div class="list" id="aRecent"></div></div></div>
+<div class="card" style="margin-top:16px"><h3>Non couvert pour l'instant</h3><div class="list"><div class="item">Crash natif Android <span class="pill warn">Non couvert</span></div><div class="item">Erreurs natives Capacitor <span class="pill warn">À développer</span></div></div></div>
+</section>
+<section class="section" id="commerce" data-live="0"><div class="banner warn">Section de démonstration : non connectée à des données réelles (voir README, « Ce qui reste à développer »).</div>
+<div class="heading"><div><div class="eyebrow">Indicateurs métier</div><h2>Activité commerciale</h2><p>Exemple de suivi agrégé, sans données clients nominatives.</p></div></div>
+<div class="notice">Les valeurs ci-dessous sont fictives. Le prototype ne lit pas les paiements ni les comptes CalcNote.</div>
+<div class="grid stats"><div class="card"><div class="stat-label">Opérations (démo)</div><div class="stat-value">312</div></div><div class="card"><div class="stat-label">Comptes actifs (démo)</div><div class="stat-value">84</div></div><div class="card"><div class="stat-label">Paiements en échec (démo)</div><div class="stat-value">4</div></div><div class="card"><div class="stat-label">Passes GPS (démo)</div><div class="stat-value">26</div></div></div>
+<div class="card"><h3>Indicateurs autorisés à terme</h3><div class="list"><div class="item">Volume d'opérations agrégé <span class="pill">À connecter</span></div><div class="item">Utilisation des crédits et abonnements <span class="pill">À connecter</span></div><div class="item">Taux d'échec des paiements <span class="pill">À connecter</span></div><div class="item">Utilisation des passes GPS <span class="pill">À connecter</span></div></div></div>
+</section>
+<section class="section" id="diagnostic" data-live="0"><div class="banner warn">Section de démonstration : non connectée à des données réelles (voir README, « Ce qui reste à développer »).</div>
+<div class="heading"><div><div class="eyebrow">Analyse assistée</div><h2>Diagnostic IA</h2><p>Exemples de diagnostics simulés, non générés par un modèle connecté.</p></div></div>
+<div class="card"><div class="row"><h3>INC-024 • Déconnexions Android répétées</h3><span class="pill warn">Moyen</span></div><p><b>Hypothèse :</b> bascule réseau ou délai de reprise de synchronisation.</p><p class="muted">Éléments attendus : séquence des événements réseau, version, horodatages et erreurs de synchronisation anonymisées.</p><p><b>Proposition :</b> vérifier la stratégie de reprise réseau et ajouter une temporisation exponentielle avec limite.</p><span class="pill gray">Diagnostic de démonstration</span></div>
+<div class="card" style="margin-top:14px"><div class="row"><h3>INC-025 • Réponse API lente</h3><span class="pill danger">Élevé</span></div><p><b>Hypothèse :</b> latence réseau ou requête backend lente.</p><p><b>Proposition :</b> collecter les durées, corréler les requêtes par identifiant non personnel et vérifier les journaux côté serveur.</p></div>
+</section>
+<section class="section" id="improvements" data-live="0"><div class="banner warn">Section de démonstration : non connectée à des données réelles (voir README, « Ce qui reste à développer »).</div>
+<div class="heading"><div><div class="eyebrow">File de propositions</div><h2>Améliorations</h2><p>Les propositions doivent être testées hors production avant validation.</p></div></div>
+<div class="card"><div class="approval"><h4>IMP-001 • Reprise réseau Android</h4><p>Ajouter une stratégie de retry bornée et une journalisation des échecs de synchronisation.</p><p><b>Risque :</b> faible à moyen • <b>Statut :</b> proposition de démonstration</p><div class="actions"><button class="btn primary approve" data-id="IMP-001">Approuver la démo</button><button class="btn reject" data-id="IMP-001">Refuser</button></div><p class="muted result" id="result-IMP-001">En attente de décision.</p></div>
+<div class="approval"><h4>IMP-002 • Contrôle des erreurs JS</h4><p>Regrouper les erreurs par empreinte et limiter les événements répétitifs.</p><p><b>Risque :</b> faible • <b>Statut :</b> proposition de démonstration</p><div class="actions"><button class="btn primary approve" data-id="IMP-002">Approuver la démo</button><button class="btn reject" data-id="IMP-002">Refuser</button></div><p class="muted result" id="result-IMP-002">En attente de décision.</p></div></div>
+<div class="notice" style="margin-top:14px">L'approbation ci-dessus ne déclenche aucune modification de code, aucun déploiement et aucune action sur Supabase. Elle illustre uniquement le workflow humain.</div>
+</section>
+<section class="section" id="reports" data-live="1">
+<div class="heading"><div><div class="eyebrow">Suivi périodique</div><h2>Rapports</h2><p>Rapport construit à partir des données réelles de la période choisie, sans IA.</p></div><div class="head-tools"><select class="sel" data-period aria-label="Période"><option value="24">24 heures</option><option value="168">7 jours</option><option value="720">30 jours</option></select><button class="btn primary" id="reportBtn">Générer le rapport</button></div></div>
+<div class="card"><h3>Rapport</h3><pre id="reportOutput" class="report">Choisissez la période puis « Générer le rapport ».</pre><button class="btn" id="reportCopy" hidden>Copier le rapport</button></div>
+</section>
+<section class="section" id="settings" data-live="1">
+<div class="heading"><div><div class="eyebrow">Configuration</div><h2>Paramètres</h2><p>Connexion au projet Sentinel.</p></div></div>
+<div class="card"><h3>Sources de surveillance</h3><div class="list">
+<div class="item"><div class="grow">Supabase Sentinel<div class="muted small" id="cfgUrl"></div><div class="muted small" id="cfgAcct"></div></div><span id="cfgConn"></span></div>
+<div class="item">CalcNote Web et Android (événements) <span class="pill live">Via sentinel-ingest</span></div>
+<div class="item">GitHub Actions <span class="pill gray">Non connecté</span></div>
+<div class="item">Moteur IA <span class="pill gray">Non connecté</span></div></div>
+<h3 style="margin-top:22px">Règles de contrôle</h3><div class="notice">Lecture seule par défaut. Toute modification de code, configuration, base de données ou déploiement exige une approbation explicite du propriétaire.</div>
+<label><input type="checkbox" checked disabled> Exiger une approbation humaine avant toute intervention de production</label><br><label><input type="checkbox" checked disabled> Conserver un journal d'audit des décisions (à développer)</label>
+<div class="actions" style="margin-top:18px"><button class="btn" id="btnKey">Changer la clé publique</button><button class="btn" id="btnOut2">Se déconnecter</button></div></div>
+</section>
+</div></main></div>
+<script>
+(function(){
+"use strict";
+var C=window.SENTINEL_DASH||{};
+var URL_=String(C.url||"").replace(/\/+$/,"");
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(_){return null}}
+var state={more:false,hours:24,data:null,session:null,anon:String(C.anon||"")||ls("sentinel-anon")||"",busy:false,errKind:null};
+var TYPE={app_started:["Démarrage de l'application","live"],js_error:["Erreur JavaScript","danger"],unhandled_rejection:["Promesse rejetée","danger"],network_online:["Connexion rétablie","gray"],network_offline:["Perte de connexion","warn"]};
+var PLAT={web:"Web",android:"Android",unknown:"Inconnu"};
+var PERIOD={24:"dernières 24 h",168:"7 derniers jours",720:"30 derniers jours"};
+
+/* ---------- dates ---------- */
+function ago(iso){if(!iso)return "jamais";var s=Math.max(0,(Date.now()-new Date(iso).getTime())/1000);
+ if(s<45)return "à l'instant";if(s<3600)return "il y a "+Math.round(s/60)+" min";if(s<86400)return "il y a "+Math.round(s/3600)+" h";return "il y a "+Math.round(s/86400)+" j"}
+function fmt(iso){if(!iso)return "—";try{return new Date(iso).toLocaleString("fr-FR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}catch(_){return iso}}
+function fmtDay(iso,bucket){try{var d=new Date(iso);return bucket==="day"?d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}):d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"})+" "+d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}catch(_){return ""}}
+function nf(n){return Number(n||0).toLocaleString("fr-FR")}
+
+/* ---------- session et réseau ---------- */
+function loadSession(){try{var s=JSON.parse(ls("sentinel-session")||"null");if(s&&s.refresh)return s}catch(_){}return null}
+function saveSession(s){state.session=s;ls("sentinel-session",s?JSON.stringify(s):null)}
+function mkErr(kind,msg){var e=new Error(msg||kind);e.kind=kind;return e}
+function hdr(token){var h={"apikey":state.anon,"Content-Type":"application/json"};if(token)h["Authorization"]="Bearer "+token;return h}
+function authCall(grant,body){
+ return fetch(URL_+"/auth/v1/token?grant_type="+grant,{method:"POST",headers:hdr(),body:JSON.stringify(body)}).then(function(r){
+  return r.json().catch(function(){return {}}).then(function(j){
+   if(!r.ok){var m=String(j.error_description||j.msg||j.error||"");throw mkErr(r.status===400||r.status===401?"credentials":"server",m)}
+   return {access:j.access_token,refresh:j.refresh_token,exp:Date.now()+(Number(j.expires_in)||3600)*1000,email:(j.user&&j.user.email)||""}})
+ },function(){throw mkErr("network")})}
+function refresh(){var s=state.session;if(!s||!s.refresh)return Promise.reject(mkErr("auth"));
+ return authCall("refresh_token",{refresh_token:s.refresh}).then(function(n){n.email=n.email||s.email;saveSession(n);return n},function(e){if(e.kind==="credentials")saveSession(null);throw e.kind==="credentials"?mkErr("auth"):e})}
+function rpc(fn,args,retry){
+ var s=state.session;if(!s)return Promise.reject(mkErr("auth"));
+ var go=function(){return fetch(URL_+"/rest/v1/rpc/"+fn,{method:"POST",headers:hdr(state.session.access),body:JSON.stringify(args||{})}).then(function(r){
+   return r.json().catch(function(){return null}).then(function(j){
+    if(r.ok)return j;
+    var code=j&&j.code,msg=String((j&&(j.message||j.msg))||"");
+    if(r.status===401||code==="PGRST301"||/jwt/i.test(msg)){if(!retry)return refresh().then(function(){return rpc(fn,args,true)});throw mkErr("auth")}
+    if(r.status===403||code==="42501"||/not_authorized/.test(msg))throw mkErr("forbidden");
+    if(r.status===404)throw mkErr("setup","Fonction introuvable : exécutez la migration 002.");
+    throw mkErr("server",msg||("HTTP "+r.status))})
+  },function(){throw mkErr("network")})};
+ if(s.exp&&s.exp-Date.now()<30000&&!retry)return refresh().then(go);
+ return go()}
+
+/* ---------- écran de connexion ---------- */
+function lock(msg){document.body.classList.add("locked");$("#keyRow").hidden=!!(C.anon);if(!C.anon&&state.anon)$("#fKey").value=state.anon;$("#fErr").textContent=msg||"";var e=$("#fEmail");if(e&&!e.value){var m=ls("sentinel-email");if(m)e.value=m}}
+function unlock(){document.body.classList.remove("locked")}
+$("#loginForm").addEventListener("submit",function(ev){
+ ev.preventDefault();var err=$("#fErr"),btn=$("#fGo");err.textContent="";
+ if(!URL_){err.textContent="Adresse du projet Sentinel absente de config.js.";return}
+ if(!C.anon){var k=$("#fKey").value.trim();if(!k){err.textContent="Collez la clé publique du projet (sb_publishable_…).";return}state.anon=k;ls("sentinel-anon",k)}
+ else state.anon=String(C.anon);
+ btn.disabled=true;btn.textContent="Connexion…";
+ authCall("password",{email:$("#fEmail").value.trim(),password:$("#fPass").value}).then(function(s){
+  ls("sentinel-email",s.email||$("#fEmail").value.trim());saveSession(s);$("#fPass").value="";unlock();load();
+ }).catch(function(e){
+  err.textContent=e.kind==="credentials"?"Adresse ou mot de passe incorrect.":e.kind==="network"?"Impossible de joindre Sentinel. Vérifiez la connexion.":"Connexion refusée par le serveur."+(e.message?" ("+e.message+")":"");
+ }).then(function(){btn.disabled=false;btn.textContent="Se connecter"})});
+function logout(){var s=state.session;if(s&&s.access&&URL_)fetch(URL_+"/auth/v1/logout",{method:"POST",headers:hdr(s.access)}).catch(function(){});saveSession(null);state.data=null;$("#fPass").value="";lock("");renderAll()}
+$("#btnOut").onclick=logout;$("#btnOut2").onclick=logout;
+$("#btnKey").onclick=function(){if(C.anon){alert("La clé est fixée dans config.js.");return}ls("sentinel-anon",null);state.anon="";logout()};
+
+/* ---------- chargement ---------- */
+function setBusy(b){state.busy=b;$$("[data-refresh]").forEach(function(x){x.disabled=b})}
+function load(silent){
+ if(!state.session)return;setBusy(true);
+ return rpc("sentinel_overview",{p_hours:state.hours}).then(function(d){state.data=d;state.errKind=null;state.errMsg="";renderAll()}).catch(function(e){
+  if(e.kind==="auth"){saveSession(null);lock("Session expirée. Reconnectez-vous.");return}
+  state.errKind=e.kind;state.errMsg=e.message;renderAll()
+ }).then(function(){setBusy(false)})}
+$$("[data-refresh]").forEach(function(b){b.onclick=function(){load()}});
+$$("[data-period]").forEach(function(s){s.onchange=function(){state.hours=Number(s.value);$$("[data-period]").forEach(function(x){x.value=s.value});load()}});
+setInterval(function(){if(!document.hidden&&state.session&&!document.body.classList.contains("locked"))load(true)},60000);
+
+/* ---------- rendu ---------- */
+function platStatus(p){
+ if(!p||!p.events)return {pill:"gray",txt:"Aucun signal",bar:0,col:"var(--muted)"};
+ var ok=Math.round(100*(1-p.errors/p.events));
+ if(!p.errors)return {pill:"",txt:"Stable",bar:100,col:"var(--green)"};
+ if(p.errors>=10)return {pill:"danger",txt:p.errors+" erreurs",bar:ok,col:"var(--red)"};
+ return {pill:"warn",txt:"À surveiller ("+p.errors+")",bar:ok,col:"var(--amber)"}}
+function eventLine(e){
+ var t=TYPE[e.event_type]||[e.event_type,"gray"];
+ var fp=(e.event_type==="js_error"||e.event_type==="unhandled_rejection")&&e.fingerprint?" · "+esc(e.fingerprint):"";
+ return '<div class="item"><div class="grow"><b>'+esc(t[0])+'</b><div class="muted">'+esc(PLAT[e.platform]||e.platform)+' · v'+esc(e.app_version||"?")+' · inst. '+esc(e.install)+fp+' · '+esc(ago(e.received_at))+'</div></div><span class="pill '+(t[1]==="live"?"":t[1])+'">'+esc(t[1]==="danger"?"Erreur":t[1]==="warn"?"Réseau":t[1]==="gray"?"Info":"Normal")+'</span></div>'}
+function chart(d){
+ var ms=d.bucket==="day"?86400000:3600000,since=new Date(d.since).getTime(),now=new Date(d.generated_at).getTime(),map={};
+ (d.series||[]).forEach(function(p){map[Math.floor(new Date(p.t).getTime()/ms)]=p});
+ var from=Math.floor(since/ms),to=Math.floor(now/ms),cols=[],max=1;
+ for(var k=from;k<=to;k++){var p=map[k]||{events:0,errors:0};cols.push({k:k,e:p.events,r:p.errors});if(p.events>max)max=p.events}
+ var h='';cols.forEach(function(c){var hh=c.e?Math.max(3,Math.round(100*c.e/max)):0;var er=c.e?Math.round(100*c.r/c.e):0;
+  h+='<i style="height:'+hh+'%" title="'+esc(fmtDay(new Date(c.k*ms).toISOString(),d.bucket)+" : "+c.e+" événement(s), "+c.r+" erreur(s)")+'"><b style="height:'+er+'%"></b></i>'});
+ return '<div class="chart" role="img" aria-label="Événements par '+(d.bucket==="day"?"jour":"heure")+'">'+h+'</div><div class="chart-ax"><span>'+esc(fmtDay(new Date(from*ms).toISOString(),d.bucket))+'</span><span>'+(d.bucket==="day"?"par jour":"par heure")+'</span><span>'+esc(fmtDay(new Date(to*ms).toISOString(),d.bucket))+'</span></div>'}
+function topErrors(d){
+ var l=d.top_errors||[];if(!l.length)return '<div class="empty">Aucune erreur sur la période.</div>';
+ return '<div class="list">'+l.map(function(x){
+  var name=x.error_name?esc(x.error_name)+(x.error_message?" — "+esc(x.error_message):""):"Empreinte seule (le texte de l'erreur n'est pas transmis)";
+  return '<div class="item"><div class="grow"><b>'+esc(x.fingerprint||"(sans empreinte)")+'</b> <span class="muted">'+(x.event_type==="js_error"?"erreur JS":"promesse rejetée")+'</span><div class="muted">'+name+'</div><div class="muted">'+esc((x.platforms||[]).map(function(p){return PLAT[p]||p}).join(", "))+' · v'+esc((x.versions||[]).join(", v"))+' · dernière '+esc(ago(x.last_at))+'</div></div><span class="pill danger">×'+nf(x.count)+'</span></div>'}).join("")+'</div>'}
+function versionsTable(d,plat){
+ var l=(d.by_version||[]).filter(function(v){return !plat||v.platform===plat});
+ if(!l.length)return '<div class="empty">Aucune donnée sur la période.</div>';
+ return '<div class="table-wrap"><table class="table"><tr><th>Version</th>'+(plat?'':'<th>Plateforme</th>')+'<th>Événements</th><th>Installations</th><th>Erreurs</th></tr>'+l.map(function(v){return '<tr><td>v'+esc(v.app_version)+'</td>'+(plat?'':'<td>'+esc(PLAT[v.platform]||v.platform)+'</td>')+'<td>'+nf(v.events)+'</td><td>'+nf(v.installs)+'</td><td>'+nf(v.errors)+'</td></tr>'}).join("")+'</table></div>'}
+function banner(el,d){
+ if(state.errKind){var m={network:"Impossible de joindre Sentinel (réseau). Les chiffres affichés peuvent être anciens.",forbidden:"Ce compte n'est pas autorisé à lire Sentinel. Ajoutez-le à sentinel_admins (voir INSTALL-FR.md, étape 4).",setup:"La fonction de lecture est introuvable : exécutez la migration 002 dans le projet Sentinel.",server:"Erreur du serveur Sentinel"+(state.errMsg?" : "+state.errMsg:"")+"."}[state.errKind]||"Erreur inconnue.";el.className="banner bad";el.textContent=m;return}
+ if(!d){el.className="banner";el.textContent="Chargement…";return}
+ if(!d.last_event_at){el.className="banner warn";el.textContent="Aucun événement reçu pour le moment. Ouvrez CalcNote v4.0.0.2 avec du réseau, puis actualisez. Si rien n'arrive, vérifiez la fonction sentinel-ingest (TESTING.md).";return}
+ var age=(Date.now()-new Date(d.last_event_at).getTime())/3600000;
+ el.className="banner "+(age>48?"warn":"ok");el.textContent="Données réelles. Dernière réception : "+ago(d.last_event_at)+" ("+fmt(d.last_event_at)+")."+(age>48?" Aucun signal depuis plus de 48 h.":"")}
+function renderSurv(d){
+ banner($("#sBanner"),d);
+ var t=d&&d.totals||{};
+ $("#sLast").textContent=d&&d.last_event_at?ago(d.last_event_at):"—";
+ $("#sLastAbs").textContent=d&&d.last_event_at?fmt(d.last_event_at):"Aucun événement";
+ $("#sEvents").textContent=d?nf(t.events):"—";$("#sPeriod").textContent=PERIOD[state.hours]||"";
+ $("#sInst").textContent=d?nf(t.installs):"—";$("#sSess").textContent=d?nf(t.sessions)+" sessions":"";
+ $("#sErr").textContent=d?nf(t.errors):"—";$("#sErrPill").className="pill "+(d&&t.errors?"warn":"");$("#sErrPill").textContent=d?(t.errors?"À examiner":"Aucune erreur"):"";
+ var rec=d?(d.recent||[]):[];$("#sRecent").innerHTML=rec.length?rec.slice(0,state.more?30:10).map(eventLine).join(""):'<div class="empty">Aucun événement reçu.</div>';
+ var mb=$("#sMore");mb.hidden=rec.length<=10;mb.textContent=state.more?"Voir moins":"Voir les "+rec.length+" derniers"
+ var bp=d&&d.by_platform||{};
+ $("#sPlat").innerHTML=["web","android"].map(function(k){var p=bp[k],st=platStatus(p);
+  return '<div class="row"><b>CalcNote '+PLAT[k]+'</b><span class="pill '+st.pill+'">'+esc(st.txt)+'</span></div><div class="bar"><span style="width:'+st.bar+'%;background:'+st.col+'"></span></div><div class="muted small" style="margin:-8px 0 12px">'+(p?nf(p.events)+' événements · dernier signal '+esc(ago(p.last_at)):'Aucun signal sur la période')+'</div>'}).join("")+'<p class="muted small">La barre indique la part d\'événements sans erreur.</p>';
+ $("#sChart").innerHTML=d?chart(d):"";
+ $("#sTop").innerHTML=d?topErrors(d):"";
+ $("#sVers").innerHTML=d?versionsTable(d,null):""}
+function renderAndroid(d){
+ var a=d&&d.by_platform&&d.by_platform.android;
+ $("#aSess").textContent=a?nf(a.sessions):"0";$("#aInst").textContent=a?nf(a.installs):"0";$("#aErr").textContent=a?nf(a.errors):"0";$("#aOff").textContent=a?nf(a.offline):"0";
+ $("#aVers").innerHTML=d?versionsTable(d,"android"):"";
+ var rec=(d&&d.recent||[]).filter(function(e){return e.platform==="android"});
+ $("#aRecent").innerHTML=rec.length?rec.map(eventLine).join(""):'<div class="empty">Aucun événement Android récent.</div>';
+ $("#aBanner").className="banner "+(state.errKind?"bad":"");$("#aBanner").textContent=state.errKind?"Données indisponibles : "+(state.errMsg||state.errKind):"Données réelles reçues de l'application Android pour la période : "+(PERIOD[state.hours]||"")+"."}
+function report(d){
+ if(!d)return "Aucune donnée chargée.";
+ var t=d.totals||{},bp=d.by_platform||{},L=[];
+ var d0=new Date(d.generated_at);
+ L.push("RAPPORT SENTINEL — "+d0.toLocaleDateString("fr-FR",{day:"2-digit",month:"long",year:"numeric"})+" à "+d0.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}));
+ L.push("Période analysée : "+(PERIOD[d.hours]||d.hours+" h"));
+ L.push("Dernière réception : "+(d.last_event_at?ago(d.last_event_at)+" ("+fmt(d.last_event_at)+")":"aucune"));
+ L.push("");
+ L.push("Événements : "+nf(t.events)+" (Web "+nf(bp.web&&bp.web.events)+", Android "+nf(bp.android&&bp.android.events)+")");
+ L.push("Installations actives : "+nf(t.installs)+" · Sessions : "+nf(t.sessions));
+ L.push("Erreurs : "+nf(t.errors)+" (Web "+nf(bp.web&&bp.web.errors)+", Android "+nf(bp.android&&bp.android.errors)+")");
+ L.push("Pertes de connexion : "+nf(t.offline)+" · Retours de connexion : "+nf(t.online));
+ var vs=(d.by_version||[]).map(function(v){return "v"+v.app_version+" ("+(PLAT[v.platform]||v.platform)+") : "+nf(v.events)+" événements"});
+ L.push("Versions vues : "+(vs.length?vs.join(" ; "):"aucune"));
+ var te=d.top_errors||[];
+ if(te.length){L.push("");L.push("Erreurs les plus fréquentes :");te.slice(0,5).forEach(function(x){L.push(" - "+(x.fingerprint||"?")+" ×"+x.count+" ("+(x.error_name||"empreinte seule")+")")})}
+ L.push("");L.push("Recommandations :");
+ if(!t.events)L.push(" - Aucun événement : vérifier que CalcNote v4.0.0.2 est ouvert avec du réseau et que la fonction sentinel-ingest répond (TESTING.md).");
+ else{
+  if(t.errors)L.push(" - Examiner l'erreur la plus fréquente"+(te[0]?" ("+(te[0].fingerprint||"?")+")":"")+" avant de proposer une correction.");
+  if(t.offline>5)L.push(" - Plusieurs pertes de connexion : vérifier la stratégie de reprise réseau.");
+  if(!t.errors&&t.offline<=5)L.push(" - Aucune action nécessaire.");
+  if(!(bp.android&&bp.android.events))L.push(" - Aucun signal Android sur la période : installer ou ouvrir l'APK récent.")}
+ L.push("");L.push("Rapport généré automatiquement à partir des données réelles reçues, sans analyse par IA.");
+ return L.join("\n")}
+function renderSettings(){
+ var s=state.session;
+ $("#cfgConn").innerHTML=s?'<span class="pill live">Connecté</span>':'<span class="pill gray">Non connecté</span>';
+ $("#cfgAcct").textContent=s&&s.email?s.email:"—";$("#cfgUrl").textContent=URL_||"—"}
+function renderAll(){renderSurv(state.data);renderAndroid(state.data);renderSettings()}
+$("#sMore").onclick=function(){state.more=!state.more;renderSurv(state.data)};
+$("#reportBtn").onclick=function(){var d=state.data;$("#reportOutput").textContent=report(d);$("#reportCopy").hidden=!d};
+$("#reportCopy").onclick=function(){var txt=$("#reportOutput").textContent,b=$("#reportCopy");
+ var done=function(){b.textContent="Copié";setTimeout(function(){b.textContent="Copier le rapport"},1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,function(){});
+ else{var t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand("copy");done()}catch(_){}t.remove()}};
+
+/* ---------- navigation, thème (inchangés) ---------- */
+var titles={surveillance:"Surveillance générale",android:"Surveillance Android",commerce:"Activité commerciale",diagnostic:"Diagnostic IA",improvements:"Améliorations",reports:"Rapports",settings:"Paramètres"};
+var nav=$("#nav"),sidebar=$("#sidebar");
+function livePill(page){var live=$("#"+page).getAttribute("data-live")==="1";var p=$("#modePill");p.textContent=live?"DONNÉES RÉELLES":"MODE DÉMO";p.className="pill label "+(live?"live":"warn")}
+nav.addEventListener("click",function(e){var b=e.target.closest("[data-page]");if(!b)return;$$(".nav button").forEach(function(x){x.classList.toggle("active",x===b)});$$(".section").forEach(function(x){x.classList.toggle("active",x.id===b.dataset.page)});$("#pageTitle").textContent=titles[b.dataset.page];livePill(b.dataset.page);sidebar.classList.remove("open");$("#overlay").classList.remove("show")});
+$("#theme").onclick=function(){var dark=document.documentElement.dataset.theme!=="dark";document.documentElement.dataset.theme=dark?"dark":"light";ls("sentinel-theme",dark?"dark":"light")};
+if(ls("sentinel-theme")==="dark")document.documentElement.dataset.theme="dark";
+$("#hamb").onclick=function(){sidebar.classList.add("open");$("#overlay").classList.add("show")};
+$("#overlay").onclick=function(){sidebar.classList.remove("open");$("#overlay").classList.remove("show")};
+$$(".approve,.reject").forEach(function(b){b.onclick=function(){var id=b.dataset.id,ok=b.classList.contains("approve"),r=$("#result-"+id);r.textContent=ok?"Approuvé dans la démonstration uniquement. Aucune action réelle exécutée.":"Proposition refusée dans la démonstration.";r.style.color=ok?"var(--green)":"var(--red)";$$("button",b.parentElement).forEach(function(x){x.disabled=true})}});
+
+/* ---------- démarrage ---------- */
+livePill("surveillance");renderAll();
+var sess=loadSession();
+if(sess&&state.anon&&URL_){state.session=sess;unlock();load()}else lock("");
+})();
+
+</script></body></html>
